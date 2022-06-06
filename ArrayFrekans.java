@@ -2,51 +2,33 @@ import java.util.*;
 
 public class ArrayFrekans
 {
-    public static void main(String[] args)
-    {
-        Scanner tara = new Scanner(System.in);
-        System.out.print("Dizinin boyutunu giriniz:");
-        int size= tara.nextInt();
-        if(size<1)
+     public static void main(String[] args) {
+
+        int[] array = {10, 20, 20, 10, 10, 20, 5, 20};
+
+        int [] again  = new int[array.length];
+        int index = -1;
+
+        for(int i = 0; i < array.length; i++)
         {
-            System.out.println("Hatali giris!");
-            System.exit(0);
-        }
-        int[] arr = new int[size];
-
-        for(int i=0;i<size;i++)
-        {
-            System.out.printf("Dizinin %d. elemanini giriniz:",i+1);
-            arr[i]= tara.nextInt();
-        }
-
-        System.out.println("\nGirilen dizi: "+Arrays.toString(arr)+"\n");
-
-        int [] test = new int[arr.length];
-        int trp = -1;
-
-        for(int i=0;i<arr.length; i++)
-        {
-            int cnt = 1;
-            for(int j=i+1;j<arr.length;j++)
+            int count =1;
+            for(int j = i+1; j < array.length; j++)
             {
-                if(arr[i] == arr[j])
+                if(array[i] == array[j])
                 {
-                    cnt++;
-                    test[j] = trp;
+                    count++;
+                    again [j] = index;
                 }
             }
-            if(test[i]!=trp)
-                test[i]=cnt;
+            if(again [i] != index)
+                again [i] = count;
         }
 
-        System.out.println("Sayi   /   Siklik                                                                            (lol)");
-        for(int i=0;i<test.length;i++)
+        for(int i = 0; i < again.length; i++)
         {
-            if(test[i]!=trp)
-                System.out.println(+arr[i]+"      /   "+test[i]);
+            if(again [i] != index)
+                System.out.println("Number "+ array[i] +" repeated "+ again [i] + " times");
         }
 
     }
-
 }
